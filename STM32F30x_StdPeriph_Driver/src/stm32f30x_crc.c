@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f30x_crc.c
   * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    27-February-2014
+  * @version V1.2.3
+  * @date    10-July-2015
   * @brief   This file provides firmware functions to manage the following
   *          functionalities of CRC computation unit peripheral:
   *            + Configuration of the CRC computation unit
@@ -211,7 +211,7 @@ void CRC_SetInitRegister(uint32_t CRC_InitValue)
 }
 
 /**
-  * @brief  Initializes the polynomail coefficients.
+  * @brief  Initializes the polynomial coefficients.
   * @param  CRC_Pol: Polynomial to be used for CRC calculation.
   * @retval None
   */
@@ -317,7 +317,7 @@ uint32_t CRC_GetCRC(void)
 
 /**
   * @brief  Stores an 8-bit data in the Independent Data(ID) register.
-  * @param  CRC_IDValue: 8-bit value to be stored in the ID register 					
+  * @param  CRC_IDValue: 8-bit value to be stored in the ID register
   * @retval None
   */
 void CRC_SetIDRegister(uint8_t CRC_IDValue)

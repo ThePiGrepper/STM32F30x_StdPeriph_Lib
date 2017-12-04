@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32303c_eval_audio_codec.c
   * @author  MCD Application Team
-  * @version V1.0.1
-  * @date    23-October-2012
+  * @version V1.0.3
+  * @date    31-October-2014
   * @brief   This file includes the low layer driver for CS42L52 Audio Codec
   *          available on STM32303C_EVAL evaluation board(MB1019).
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -1198,7 +1198,7 @@ static void Codec_GPIO_Init(void)
   SPI_I2S_DeInit(CODEC_I2S);
   /* I2S3 configuration ---------------------------------------//
    SPI3_I2S3 - configured as follow:
-        - Work as Master & (transmiter) Rx
+        - Work as Master & (transmitter) Rx
         - 16bit data
         - (Disable) Output MCLK
         - Audio sample rate: 11kHz(have to use 8k/24k for CS42L52 ?)
@@ -1292,7 +1292,7 @@ static void Codec_GPIO_Recorder_Init(void)
   SPI_I2S_DeInit(CODEC_I2S);
   /* I2S3 configuration ---------------------------------------//
    SPI3_I2S3 - configured as follow:
-        - Work as Master & (transmiter) Rx
+        - Work as Master & (transmitter) Rx
         - 16bit data
         - (Disable) Output MCLK
         - Audio sample rate: 11kHz(have to use 8k/24k for CS42L52)

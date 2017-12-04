@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f30x_tim.c
   * @author  MCD Application Team
-  * @version V1.2.2
-  * @date    27-February-2015
+  * @version V1.2.3
+  * @date    10-July-2015
   * @brief   This file provides firmware functions to manage the following
   *          functionalities of the TIM peripheral:
   *            + TimeBase management
@@ -2981,7 +2981,7 @@ void TIM_ITConfig(TIM_TypeDef* TIMx, uint16_t TIM_IT, FunctionalState NewState)
   * @brief  Configures the TIMx event to be generate by software.
   * @param  TIMx: where x can be 1, 2, 3, 4, 6, 7, 8, 15, 16, 20 or 17 to select the TIM peripheral.
   * @param  TIM_EventSource: specifies the event source.
-  *          This parameter can be one or more of the following values:	
+  *          This parameter can be one or more of the following values:
   *            @arg TIM_EventSource_Update: Timer update Event source
   *            @arg TIM_EventSource_CC1: Timer Capture Compare 1 Event source
   *            @arg TIM_EventSource_CC2: Timer Capture Compare 2 Event source

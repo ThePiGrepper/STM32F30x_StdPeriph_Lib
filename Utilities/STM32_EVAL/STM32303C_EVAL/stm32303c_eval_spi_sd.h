@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32303c_eval_spi_sd.h
   * @author  MCD Application Team
-  * @version V1.0.1
-  * @date    23-October-2012
+  * @version V1.0.3
+  * @date    31-October-2014
   * @brief   This file contains all the functions prototypes for the stm32303c_eval_spi_sd
   *          firmware driver.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@
 typedef enum
 {
 /**
-  * @brief  SD reponses and error flags
+  * @brief  SD responses and error flags
   */
   SD_RESPONSE_NO_ERROR      = (0x00),
   SD_IN_IDLE_STATE          = (0x01),
@@ -113,7 +113,7 @@ typedef struct
   __IO uint8_t  WrSpeedFact;          /*!< Write speed factor */
   __IO uint8_t  MaxWrBlockLen;        /*!< Max. write data block length */
   __IO uint8_t  WriteBlockPaPartial;  /*!< Partial blocks for write allowed */
-  __IO uint8_t  Reserved3;            /*!< Reserded */
+  __IO uint8_t  Reserved3;            /*!< Reserved */
   __IO uint8_t  ContentProtectAppli;  /*!< Content protection application */
   __IO uint8_t  FileFormatGrouop;     /*!< File format group */
   __IO uint8_t  CopyFlag;             /*!< Copy flag (OTP) */
