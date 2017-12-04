@@ -2,14 +2,14 @@
   ******************************************************************************
   * @file    stm32f30x_hrtim.h
   * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    27-February-2014
+  * @version V1.2.2
+  * @date    27-February-2015
   * @brief   This file contains all the functions prototypes for the HRTIM firmware
   *          library.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2015 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -425,16 +425,16 @@ typedef struct {
   * @{
   * @brief Constants defining timer output identifiers
   */
-#define HRTIM_OUTPUT_TA1  (uint32_t)0x00000001  /*!< Timer A - Ouput 1 identifier */
-#define HRTIM_OUTPUT_TA2  (uint32_t)0x00000002  /*!< Timer A - Ouput 2 identifier */
-#define HRTIM_OUTPUT_TB1  (uint32_t)0x00000004  /*!< Timer B - Ouput 1 identifier */
-#define HRTIM_OUTPUT_TB2  (uint32_t)0x00000008  /*!< Timer B - Ouput 2 identifier */
-#define HRTIM_OUTPUT_TC1  (uint32_t)0x00000010  /*!< Timer C - Ouput 1 identifier */
-#define HRTIM_OUTPUT_TC2  (uint32_t)0x00000020  /*!< Timer C - Ouput 2 identifier */
-#define HRTIM_OUTPUT_TD1  (uint32_t)0x00000040  /*!< Timer D - Ouput 1 identifier */
-#define HRTIM_OUTPUT_TD2  (uint32_t)0x00000080  /*!< Timer D - Ouput 2 identifier */
-#define HRTIM_OUTPUT_TE1  (uint32_t)0x00000100  /*!< Timer E - Ouput 1 identifier */
-#define HRTIM_OUTPUT_TE2  (uint32_t)0x00000200  /*!< Timer E - Ouput 2 identifier */
+#define HRTIM_OUTPUT_TA1  (uint32_t)0x00000001  /*!< Timer A - Output 1 identifier */
+#define HRTIM_OUTPUT_TA2  (uint32_t)0x00000002  /*!< Timer A - Output 2 identifier */
+#define HRTIM_OUTPUT_TB1  (uint32_t)0x00000004  /*!< Timer B - Output 1 identifier */
+#define HRTIM_OUTPUT_TB2  (uint32_t)0x00000008  /*!< Timer B - Output 2 identifier */
+#define HRTIM_OUTPUT_TC1  (uint32_t)0x00000010  /*!< Timer C - Output 1 identifier */
+#define HRTIM_OUTPUT_TC2  (uint32_t)0x00000020  /*!< Timer C - Output 2 identifier */
+#define HRTIM_OUTPUT_TD1  (uint32_t)0x00000040  /*!< Timer D - Output 1 identifier */
+#define HRTIM_OUTPUT_TD2  (uint32_t)0x00000080  /*!< Timer D - Output 2 identifier */
+#define HRTIM_OUTPUT_TE1  (uint32_t)0x00000100  /*!< Timer E - Output 1 identifier */
+#define HRTIM_OUTPUT_TE2  (uint32_t)0x00000200  /*!< Timer E - Output 2 identifier */
 
 #define IS_HRTIM_OUTPUT(OUTPUT)\
     (((OUTPUT) == HRTIM_OUTPUT_TA1)   || \
@@ -605,7 +605,7 @@ typedef struct {
 
 /** @defgroup HRTIM_StartOnSyncInputEvent
   * @{
-  * @brief Constants defining the timer behavior following the synchronization event
+  * @brief Constants defining the timer behaviour following the synchronization event
   */
 #define HRTIM_SYNCSTART_DISABLED ((uint32_t)0x00000000)  /*!< Synchronization input event has effect on the timer */
 #define HRTIM_SYNCSTART_ENABLED  (HRTIM_MCR_SYNCSTRTM)   /*!< Synchronization input event starts the timer */
@@ -619,7 +619,7 @@ typedef struct {
 
 /** @defgroup HRTIM_ResetOnSyncInputEvent
   * @{
-  * @brief Constants defining the timer behavior following the synchronization event
+  * @brief Constants defining the timer behaviour following the synchronization event
   */
 #define HRTIM_SYNCRESET_DISABLED ((uint32_t)0x00000000)  /*!< Synchronization input event has effect on the timer */
 #define HRTIM_SYNCRESET_ENABLED  (HRTIM_MCR_SYNCRSTM)    /*!< Synchronization input event resets the timer */
@@ -906,7 +906,7 @@ typedef struct {
   *        or in auto-delayed mode
   */
 #define HRTIM_AUTODELAYEDMODE_REGULAR                 ((uint32_t)0x00000000)                          /*!< standard compare mode */
-#define HRTIM_AUTODELAYEDMODE_AUTODELAYED_NOTIMEOUT   (HRTIM_TIMCR_DELCMP2_0)                         /*!< Compare event generated only if a capture has occured */
+#define HRTIM_AUTODELAYEDMODE_AUTODELAYED_NOTIMEOUT   (HRTIM_TIMCR_DELCMP2_0)                         /*!< Compare event generated only if a capture has occurred */
 #define HRTIM_AUTODELAYEDMODE_AUTODELAYED_TIMEOUTCMP1 (HRTIM_TIMCR_DELCMP2_1)                         /*!< Compare event generated if a capture has occurred or after a Compare 1 match (timeout if capture event is missing) */
 #define HRTIM_AUTODELAYEDMODE_AUTODELAYED_TIMEOUTCMP3 (HRTIM_TIMCR_DELCMP2_1 | HRTIM_TIMCR_DELCMP2_0) /*!< Compare event generated if a capture has occurred or after a Compare 3 match (timeout if capture event is missing) */
 
@@ -941,7 +941,7 @@ typedef struct {
 
 /** @defgroup HRTIM_BasicOCMode
   * @{
-  * @brief Constants defining the behavior of the output signal when the timer
+  * @brief Constants defining the behaviour of the output signal when the timer
            operates in basic output compare mode
   */
 #define HRTIM_BASICOCMODE_TOGGLE    ((uint32_t)0x00000001)  /*!< Output toggles when the timer counter reaches the compare value */
@@ -1837,7 +1837,8 @@ typedef struct {
   * @brief Constants defining the events that can be used tor trig the burst
   *        mode operation
   */
-#define HRTIM_BURSTMODETRIGGER_SOFTWARE          (uint32_t)0x00000000    /*!<  Software trigger */
+#define HRTIM_BURSTMODETRIGGER_NONE               (uint32_t)0x00000000
+#define HRTIM_BURSTMODETRIGGER_SOFTWARE           (HRTIM_BMTRGR_SW)       /*!<  Software trigger */
 #define HRTIM_BURSTMODETRIGGER_MASTER_RESET       (HRTIM_BMTRGR_MSTRST)   /*!<  Master reset */
 #define HRTIM_BURSTMODETRIGGER_MASTER_REPETITION  (HRTIM_BMTRGR_MSTREP)   /*!<  Master repetition */
 #define HRTIM_BURSTMODETRIGGER_MASTER_CMP1        (HRTIM_BMTRGR_MSTCMP1)  /*!<  Master compare 1 */
@@ -2013,6 +2014,7 @@ typedef struct {
   * @brief Constants defining the DLL calibration periods (in micro seconds)
   */
 
+#define HRTIM_SINGLE_CALIBRATION    (uint32_t)0xFFFFFFFF                           /*!< Non periodic DLL calibration */
 #define HRTIM_CALIBRATIONRATE_7300  (uint32_t)0x00000000                           /*!< 1048576 * tHRTIM (7.3 ms) */
 #define HRTIM_CALIBRATIONRATE_910   (HRTIM_DLLCR_CALRTE_0)                         /*!< 131072 * tHRTIM (910 µs) */
 #define HRTIM_CALIBRATIONRATE_114   (HRTIM_DLLCR_CALRTE_1)                         /*!< 131072 * tHRTIM (910 µs) */
@@ -2213,6 +2215,31 @@ typedef struct {
                 ((IT) == HRTIM_ISR_SYSFLT) || \
                 ((IT) == HRTIM_ISR_DLLRDY) || \
                 ((IT) == HRTIM_ISR_BMPER))
+
+/**
+  * @}
+  */
+/** @defgroup HRTIM_CommonFlag
+  * @{
+  */
+#define HRTIM_FLAG_FLT1           HRTIM_ISR_FLT1    /*!< Fault 1 interrupt flag */
+#define HRTIM_FLAG_FLT2           HRTIM_ISR_FLT2    /*!< Fault 2 interrupt flag */
+#define HRTIM_FLAG_FLT3           HRTIM_ISR_FLT3    /*!< Fault 3 interrupt flag */
+#define HRTIM_FLAG_FLT4           HRTIM_ISR_FLT4    /*!< Fault 4 interrupt flag */
+#define HRTIM_FLAG_FLT5           HRTIM_ISR_FLT5    /*!< Fault 5 interrupt flag */
+#define HRTIM_FLAG_SYSFLT         HRTIM_ISR_SYSFLT  /*!< System Fault interrupt flag */
+#define HRTIM_FLAG_DLLRDY         HRTIM_ISR_DLLRDY  /*!< DLL ready interrupt flag */
+#define HRTIM_FLAG_BMPER          HRTIM_ISR_BMPER   /*!<  Burst mode period interrupt flag */
+
+#define IS_HRTIM_FLAG(FLAG)\
+               (((FLAG) == HRTIM_ISR_FLT1)   || \
+                ((FLAG) == HRTIM_ISR_FLT2)   || \
+                ((FLAG) == HRTIM_ISR_FLT3)   || \
+                ((FLAG) == HRTIM_ISR_FLT4)   || \
+                ((FLAG) == HRTIM_ISR_FLT5)   || \
+                ((FLAG) == HRTIM_ISR_SYSFLT) || \
+                ((FLAG) == HRTIM_ISR_DLLRDY) || \
+                ((FLAG) == HRTIM_ISR_BMPER))
 /**
   * @}
   */
@@ -2276,7 +2303,7 @@ typedef struct {
 #define HRTIM_TIM_IT_SET2       HRTIM_TIMDIER_SET2IE      /*!< Timer output 2 set interrupt flag */
 #define HRTIM_TIM_IT_RST2       HRTIM_TIMDIER_RST2IE      /*!< Timer output 2 reset interrupt flag */
 #define HRTIM_TIM_IT_RST        HRTIM_TIMDIER_RSTIE       /*!< Timer reset interrupt flag */
-#define HRTIM_TIM_IT_DLYPRT     HRTIM_TIMDIER_DLYPRT1IE    /*!< Timer delay protection interrupt flag */
+#define HRTIM_TIM_IT_DLYPRT     HRTIM_TIMDIER_DLYPRTIE    /*!< Timer delay protection interrupt flag */
 
 #define IS_HRTIM_TIM_IT(IT)\
                    (((IT) == HRTIM_TIMDIER_CMP1IE)    || \
@@ -2418,7 +2445,7 @@ typedef struct {
 
 /** @brief  Enables or disables the timer counter(s)
   * @param  __HANDLE__: specifies the HRTIM Handle.
-  * @param  __TIMERS__: timersto enable/disable
+  * @param  __TIMERS__: timers to enable/disable
   *        This parameter can be any combinations of the following values:
   *            @arg HRTIM_TIMERID_MASTER: Master timer identifier
   *            @arg HRTIM_TIMERID_TIMER_A: Timer A identifier
@@ -2487,18 +2514,18 @@ void HRTIM_SimpleBase_Init(HRTIM_TypeDef* HRTIMx, uint32_t TimerIdx, HRTIM_BaseI
 
 void HRTIM_DeInit(HRTIM_TypeDef* HRTIMx);
 
-void HRTIM_SimpleBaseStart(HRTIM_TypeDef *hrtim, uint32_t TimerIdx);
-void HRTIM_SimpleBaseStop(HRTIM_TypeDef *hrtim, uint32_t TimerIdx);
+void HRTIM_SimpleBaseStart(HRTIM_TypeDef *HRTIMx, uint32_t TimerIdx);
+void HRTIM_SimpleBaseStop(HRTIM_TypeDef *HRTIMx, uint32_t TimerIdx);
 
 /* Simple output compare related functions  ************************************/
 void HRTIM_SimpleOC_Init(HRTIM_TypeDef * HRTIMx, uint32_t TimerIdx, HRTIM_BaseInitTypeDef* HRTIM_BaseInitStruct);
 
-void HRTIM_SimpleOCChannelConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_SimpleOCChannelConfig(HRTIM_TypeDef *HRTIMx,
                                                  uint32_t TimerIdx,
                                                  uint32_t OCChannel,
                                                  HRTIM_BasicOCChannelCfgTypeDef* pBasicOCChannelCfg);
 
-void HRTIM_SimpleOCStart(HRTIM_TypeDef *hrtim,
+void HRTIM_SimpleOCStart(HRTIM_TypeDef *HRTIMx,
                                          uint32_t TimerIdx,
                                          uint32_t OCChannel);
 void HRTIM_SimpleOCStop(HRTIM_TypeDef * HRTIMx,
@@ -2507,7 +2534,7 @@ void HRTIM_SimpleOCStop(HRTIM_TypeDef * HRTIMx,
 /* Simple PWM output related functions  ****************************************/
 void HRTIM_SimplePWM_Init(HRTIM_TypeDef * HRTIMx, uint32_t TimerIdx, HRTIM_BaseInitTypeDef* HRTIM_BaseInitStruct);
 
-void HRTIM_SimplePWMChannelConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_SimplePWMChannelConfig(HRTIM_TypeDef *HRTIMx,
                                                   uint32_t TimerIdx,
                                                   uint32_t PWMChannel,
                                                   HRTIM_BasicPWMChannelCfgTypeDef* pBasicPWMChannelCfg);
@@ -2521,7 +2548,7 @@ void HRTIM_SimplePWMStop(HRTIM_TypeDef * HRTIMx,
 /* Simple capture related functions  *******************************************/
 void HRTIM_SimpleCapture_Init(HRTIM_TypeDef * HRTIMx, uint32_t TimerIdx, HRTIM_BaseInitTypeDef* HRTIM_BaseInitStruct);
 
-void HRTIM_SimpleCaptureChannelConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_SimpleCaptureChannelConfig(HRTIM_TypeDef *HRTIMx,
                                                       uint32_t TimerIdx,
                                                       uint32_t CaptureChannel,
                                                       HRTIM_BasicCaptureChannelCfgTypeDef* pBasicCaptureChannelCfg);
@@ -2535,7 +2562,7 @@ void HRTIM_SimpleCaptureStop(HRTIM_TypeDef * HRTIMx,
 /* SImple one pulse related functions  *****************************************/
 void HRTIM_SimpleOnePulse_Init(HRTIM_TypeDef * HRTIMx, uint32_t TimerIdx, HRTIM_BaseInitTypeDef* HRTIM_BaseInitStruct);
 
-void HRTIM_SimpleOnePulseChannelConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_SimpleOnePulseChannelConfig(HRTIM_TypeDef *HRTIMx,
                                                        uint32_t TimerIdx,
                                                        uint32_t OnePulseChannel,
                                                        HRTIM_BasicOnePulseChannelCfgTypeDef* pBasicOnePulseChannelCfg);
@@ -2552,82 +2579,83 @@ void HRTIM_Waveform_Init(HRTIM_TypeDef * HRTIMx,
                                          HRTIM_BaseInitTypeDef* HRTIM_BaseInitStruct,
                                          HRTIM_TimerInitTypeDef* HRTIM_TimerInitStruct);
 
-void HRTIM_WaveformTimerConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_WaveformTimerConfig(HRTIM_TypeDef *HRTIMx,
                                                 uint32_t TimerIdx,
                                                 HRTIM_TimerCfgTypeDef * HRTIM_TimerCfgStruct);
 
-void HRTIM_WaveformCompareConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_WaveformCompareConfig(HRTIM_TypeDef *HRTIMx,
                                                   uint32_t TimerIdx,
                                                   uint32_t CompareUnit,
                                                   HRTIM_CompareCfgTypeDef* pCompareCfg);
 
+void HRTIM_SlaveSetCompare(HRTIM_TypeDef * HRTIMx,
+                                                  uint32_t TimerIdx,
+                                                  uint32_t CompareUnit,
+                                                  uint32_t Compare);
+
 void HRTIM_MasterSetCompare(HRTIM_TypeDef * HRTIMx,
                                                   uint32_t CompareUnit,
                                                   uint32_t Compare);
-void HRTIM_WaveformCaptureConfig(HRTIM_TypeDef *hrtim,
+
+void HRTIM_WaveformCaptureConfig(HRTIM_TypeDef *HRTIMx,
                                                   uint32_t TimerIdx,
                                                   uint32_t CaptureUnit,
                                                   HRTIM_CaptureCfgTypeDef* pCaptureCfg);
 
-void HRTIM_WaveformOuputConfig(HRTIM_TypeDef *hrtim,
-                                                uint32_t TimerIdx,
-                                                uint32_t Output,
-                                               HRTIM_OutputCfgTypeDef * pOutputCfg);
-
-void HRTIM_TimerEventFilteringConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_TimerEventFilteringConfig(HRTIM_TypeDef *HRTIMx,
                                                       uint32_t TimerIdx,
                                                       uint32_t Event,
                                                       HRTIM_TimerEventFilteringCfgTypeDef * pTimerEventFilteringCfg);
 
-void HRTIM_DeadTimeConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_DeadTimeConfig(HRTIM_TypeDef *HRTIMx,
                                            uint32_t TimerIdx,
                                            HRTIM_DeadTimeCfgTypeDef* pDeadTimeCfg);
 
-void HRTIM_ChopperModeConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_ChopperModeConfig(HRTIM_TypeDef *HRTIMx,
                                               uint32_t TimerIdx,
                                               HRTIM_ChopperModeCfgTypeDef* pChopperModeCfg);
 
-void HRTIM_BurstDMAConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_BurstDMAConfig(HRTIM_TypeDef *HRTIMx,
                                            uint32_t TimerIdx,
                                            uint32_t RegistersToUpdate);
 
 void HRTIM_SynchronizationConfig(HRTIM_TypeDef *HRTIMx,
                                                   HRTIM_SynchroCfgTypeDef * pSynchroCfg);
 
-void HRTIM_BurstModeConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_BurstModeConfig(HRTIM_TypeDef *HRTIMx,
                                             HRTIM_BurstModeCfgTypeDef* pBurstModeCfg);
 
-void HRTIM_EventConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_EventConfig(HRTIM_TypeDef *HRTIMx,
                                         uint32_t Event,
                                         HRTIM_EventCfgTypeDef* pEventCfg);
 
-void HRTIM_EventPrescalerConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_EventPrescalerConfig(HRTIM_TypeDef *HRTIMx,
                                                  uint32_t Prescaler);
 
 void HRTIM_FaultConfig(HRTIM_TypeDef *hrtim,
                                         HRTIM_FaultCfgTypeDef* pFaultCfg,
                                         uint32_t Fault);
 
-void HRTIM_FaultPrescalerConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_FaultPrescalerConfig(HRTIM_TypeDef *HRTIMx,
                                                  uint32_t Prescaler);
 void HRTIM_FaultModeCtl(HRTIM_TypeDef * HRTIMx, uint32_t Fault, uint32_t Enable);
 
-void HRTIM_ADCTriggerConfig(HRTIM_TypeDef *hrtim,
+void HRTIM_ADCTriggerConfig(HRTIM_TypeDef *HRTIMx,
                                              uint32_t ADCTrigger,
                                              HRTIM_ADCTriggerCfgTypeDef* pADCTriggerCfg);
 
-void HRTIM_WaveformCounterStart(HRTIM_TypeDef *hrtim,
+void HRTIM_WaveformCounterStart(HRTIM_TypeDef *HRTIMx,
                                                  uint32_t TimersToStart);
 
-void HRTIM_WaveformCounterStop(HRTIM_TypeDef *hrtim,
+void HRTIM_WaveformCounterStop(HRTIM_TypeDef *HRTIMx,
                                                  uint32_t TimersToStop);
 
-void HRTIM_WaveformOutputStart(HRTIM_TypeDef *hrtim,
-                                                uint32_t OuputsToStart);
+void HRTIM_WaveformOutputStart(HRTIM_TypeDef *HRTIMx,
+                                                uint32_t OutputsToStart);
 void HRTIM_WaveformOutputStop(HRTIM_TypeDef * HRTIM_,
-                                               uint32_t OuputsToStop);
+                                               uint32_t OutputsToStop);
 
-void HRTIM_DLLCalibrationStart(HRTIM_TypeDef *hrtim,
+void HRTIM_DLLCalibrationStart(HRTIM_TypeDef *HRTIMx,
                                                 uint32_t CalibrationRate);
 
 /* Interrupt/flags and DMA management */
@@ -2649,52 +2677,52 @@ ITStatus HRTIM_GetCommonITStatus(HRTIM_TypeDef * HRTIMx, uint32_t HRTIM_CommonIT
 
 void HRTIM_DMACmd(HRTIM_TypeDef* HRTIMx, uint32_t TimerIdx, uint32_t HRTIM_DMA, FunctionalState NewState);
 
-void HRTIM_BurstModeCtl(HRTIM_TypeDef *hrtim,
+void HRTIM_BurstModeCtl(HRTIM_TypeDef *HRTIMx,
                                          uint32_t Enable);
 
-void HRTIM_SoftwareCapture(HRTIM_TypeDef *hrtim,
+void HRTIM_SoftwareCapture(HRTIM_TypeDef *HRTIMx,
                                             uint32_t TimerIdx,
                                             uint32_t CaptureUnit);
 
-void HRTIM_SoftwareUpdate(HRTIM_TypeDef *hrtim,
+void HRTIM_SoftwareUpdate(HRTIM_TypeDef *HRTIMx,
                                            uint32_t TimersToUpdate);
 
-void HRTIM_SoftwareReset(HRTIM_TypeDef *hrtim,
+void HRTIM_SoftwareReset(HRTIM_TypeDef *HRTIMx,
                                           uint32_t TimersToReset);
 
 
-uint32_t HRTIM_GetCapturedValue(HRTIM_TypeDef *hrtim,
+uint32_t HRTIM_GetCapturedValue(HRTIM_TypeDef *HRTIMx,
                                     uint32_t TimerIdx,
                                     uint32_t CaptureUnit);
 
-void HRTIM_WaveformOutputConfig(HRTIM_TypeDef * HRTIM_,
+void HRTIM_WaveformOutputConfig(HRTIM_TypeDef * HRTIMx,
                                                 uint32_t TimerIdx,
                                                 uint32_t Output,
                                                 HRTIM_OutputCfgTypeDef * pOutputCfg);
 
-void HRTIM_WaveformSetOutputLevel(HRTIM_TypeDef *hrtim,
+void HRTIM_WaveformSetOutputLevel(HRTIM_TypeDef *HRTIMx,
                                                    uint32_t TimerIdx,
                                                    uint32_t Output,
                                                    uint32_t OutputLevel);
 
-uint32_t HRTIM_WaveformGetOutputLevel(HRTIM_TypeDef *hrtim,
+uint32_t HRTIM_WaveformGetOutputLevel(HRTIM_TypeDef *HRTIMx,
                                           uint32_t TimerIdx,
                                           uint32_t Output);
 
-uint32_t HRTIM_WaveformGetOutputState(HRTIM_TypeDef * hhrtim,
+uint32_t HRTIM_WaveformGetOutputState(HRTIM_TypeDef * HRTIMx,
                                           uint32_t TimerIdx,
                                           uint32_t Output);
 
-uint32_t HRTIM_GetDelayedProtectionStatus(HRTIM_TypeDef *hrtim,
+uint32_t HRTIM_GetDelayedProtectionStatus(HRTIM_TypeDef *HRTIMx,
                                               uint32_t TimerIdx,
                                               uint32_t Output);
 
-uint32_t HRTIM_GetBurstStatus(HRTIM_TypeDef *hrtim);
+uint32_t HRTIM_GetBurstStatus(HRTIM_TypeDef *HRTIMx);
 
-uint32_t HRTIM_GetCurrentPushPullStatus(HRTIM_TypeDef *hrtim,
+uint32_t HRTIM_GetCurrentPushPullStatus(HRTIM_TypeDef *HRTIMx,
                                             uint32_t TimerIdx);
 
-uint32_t HRTIM_GetIdlePushPullStatus(HRTIM_TypeDef *hrtim,
+uint32_t HRTIM_GetIdlePushPullStatus(HRTIM_TypeDef *HRTIMx,
                                          uint32_t TimerIdx);
 /**
   * @}

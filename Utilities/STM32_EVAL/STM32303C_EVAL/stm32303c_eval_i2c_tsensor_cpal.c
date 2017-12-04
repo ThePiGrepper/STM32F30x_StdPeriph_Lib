@@ -137,7 +137,7 @@ static void LM75_StructInit(void)
 
   /* Set I2C clock speed */
   LM75_DevStructure.pCPAL_I2C_Struct->I2C_Timing = LM75_I2C_TIMING;
-  			
+
 #ifdef LM75_IT
   /* Select Interrupt programming model and disable all options */
   LM75_DevStructure.CPAL_ProgModel = CPAL_PROGMODEL_INTERRUPT;
@@ -395,7 +395,7 @@ uint8_t LM75_ShutDown(FunctionalState NewState)
   __IO uint8_t RegValue = 0;
 
   LM75_Buffer[0] = 0;
-  		
+
   /* Disable all options */
   LM75_DevStructure.wCPAL_Options = 0;
 

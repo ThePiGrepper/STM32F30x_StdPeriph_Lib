@@ -2,12 +2,12 @@
   ******************************************************************************
   * @file    stm32303c_eval_spi_sd.c
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file provides a set of functions needed to manage the SPI SD
   *          Card memory mounted on STM32303C-EVAL board.
   *          It implements a high level communication layer for read and write
-  *          from/to this memory. The needed STM32F0xx hardware resources (SPI and
+  *          from/to this memory. The needed STM32F30x hardware resources (SPI and
   *          GPIO) are defined in stm32303c_eval.h file, and the initialization is
   *          performed in SD_LowLevel_Init() function declared in stm32303c_eval.c
   *          file.
@@ -18,7 +18,7 @@
   *          +-------------------------------------------------------+
   *          |                     Pin assignment                    |
   *          +-------------------------+---------------+-------------+
-  *          |  STM32F0xx SPI Pins     |     SD        |    Pin      |
+  *          |  STM32F30x SPI Pins     |     SD        |    Pin      |
   *          +-------------------------+---------------+-------------+
   *          | SD_SPI_CS_PIN           |   ChipSelect  |    1        |
   *          | SD_SPI_MOSI_PIN / MOSI  |   DataIn      |    2        |

@@ -398,10 +398,10 @@ g_pfnVectors:
 
 	.weak	COMP2_IRQHandler
 	.thumb_set COMP2_IRQHandler,Default_Handler
-	
+
 	.weak	COMP4_6_IRQHandler
 	.thumb_set COMP4_6_IRQHandler,Default_Handler
-	
+
 	.weak	I2C3_EV_IRQHandler
 	.thumb_set I2C3_EV_IRQHandler,Default_Handler
 
@@ -410,13 +410,13 @@ g_pfnVectors:
 
 	.weak	USB_HP_IRQHandler
 	.thumb_set USB_HP_IRQHandler,Default_Handler
-	
+
 	.weak	USB_LP_IRQHandler
 	.thumb_set USB_LP_IRQHandler,Default_Handler
-	
+
 	.weak	USBWakeUp_RMP_IRQHandler
 	.thumb_set USBWakeUp_RMP_IRQHandler,Default_Handler
-	
+
 	.weak	FPU_IRQHandler
 	.thumb_set FPU_IRQHandler,Default_Handler
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

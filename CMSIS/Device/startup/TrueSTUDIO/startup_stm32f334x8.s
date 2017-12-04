@@ -381,10 +381,10 @@ g_pfnVectors:
 
 	.weak	RTC_Alarm_IRQHandler
 	.thumb_set RTC_Alarm_IRQHandler,Default_Handler
-	
+
 	.weak	TIM6_DAC1_IRQHandler
 	.thumb_set TIM6_DAC1_IRQHandler,Default_Handler
-	
+
 	.weak	TIM7_DAC2_IRQHandler
 	.thumb_set TIM7_DAC2_IRQHandler,Default_Handler
 
@@ -401,19 +401,19 @@ g_pfnVectors:
 	.thumb_set HRTIM1_TIMA_IRQHandler,Default_Handler
 
   .weak	HRTIM1_TIMB_IRQHandler
-	.thumb_set HRTIM1_TIMB_IRQHandler,Default_Handler	
+	.thumb_set HRTIM1_TIMB_IRQHandler,Default_Handler
 
   .weak	HRTIM1_TIMC_IRQHandler
-	.thumb_set HRTIM1_TIMC_IRQHandler,Default_Handler	
+	.thumb_set HRTIM1_TIMC_IRQHandler,Default_Handler
 
   .weak	HRTIM1_TIMD_IRQHandler
-	.thumb_set HRTIM1_TIMD_IRQHandler,Default_Handler	
+	.thumb_set HRTIM1_TIMD_IRQHandler,Default_Handler
 
   .weak	HRTIM1_TIME_IRQHandler
-	.thumb_set HRTIM1_TIME_IRQHandler,Default_Handler	
+	.thumb_set HRTIM1_TIME_IRQHandler,Default_Handler
 
   .weak	HRTIM1_FLT_IRQHandler
-	.thumb_set HRTIM1_FLT_IRQHandler,Default_Handler	
+	.thumb_set HRTIM1_FLT_IRQHandler,Default_Handler
 
 	.weak	FPU_IRQHandler
 	.thumb_set FPU_IRQHandler,Default_Handler

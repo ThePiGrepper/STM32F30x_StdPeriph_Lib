@@ -1,11 +1,11 @@
 /**
   ******************************************************************************
-  * @file    stm32373c_eval_i2c_ee.h
+  * @file    stm32303c_eval_i2c_ee.h
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file contains all the functions prototypes for
-  *          the stm32373c_eval_i2c_ee.c firmware driver.
+  *          the stm32303c_eval_i2c_ee.c firmware driver.
   ******************************************************************************
   * @attention
   *
@@ -66,8 +66,8 @@
   */
 
 /* Select which EEPROM will be used with this driver */
-/* #define sEE_M24LR64 */
-#define sEE_M24M01
+#define sEE_M24LR64
+/* #define sEE_M24M01 */
 
 /* Uncomment the following line to use the default sEE_TIMEOUT_UserCallback()
    function implemented in stm32303c_eval_i2c_ee.c file.

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32303c_eval_lcd.h
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file contains all the functions prototypes for the stm32303c_eval_lcd
   *          firmware driver.
   ******************************************************************************
@@ -95,7 +95,12 @@ typedef struct
   #define _delay_     delay      /* !< Default _delay_ function with less precise timing */
 #endif
 
-
+/**
+  * @brief  LCD Control Id
+  */
+#define LCD_ILI9320        0x9320
+#define LCD_SPFD5408       0x5408
+#define LCD_HX8347D        0x0047
 
 /**
   * @brief  LCD Control pins
@@ -165,8 +170,10 @@ typedef struct
 #define LCD_REG_32            0x20
 #define LCD_REG_33            0x21
 #define LCD_REG_34            0x22
+#define LCD_REG_35            0x23
 #define LCD_REG_36            0x24
 #define LCD_REG_37            0x25
+#define LCD_REG_39            0x27
 #define LCD_REG_40            0x28
 #define LCD_REG_41            0x29
 #define LCD_REG_43            0x2B
@@ -206,6 +213,16 @@ typedef struct
 #define LCD_REG_81            0x51
 #define LCD_REG_82            0x52
 #define LCD_REG_83            0x53
+#define LCD_REG_84            0x54
+#define LCD_REG_85            0x55
+#define LCD_REG_86            0x56
+#define LCD_REG_87            0x57
+#define LCD_REG_88            0x58
+#define LCD_REG_89            0x59
+#define LCD_REG_90            0x5A
+#define LCD_REG_91            0x5B
+#define LCD_REG_92            0x5C
+#define LCD_REG_93            0x5D
 #define LCD_REG_96            0x60
 #define LCD_REG_97            0x61
 #define LCD_REG_106           0x6A
@@ -242,6 +259,14 @@ typedef struct
 #define LCD_REG_229           0xE5
 #define LCD_REG_231           0xE7
 #define LCD_REG_239           0xEF
+#define LCD_REG_232           0xE8
+#define LCD_REG_233           0xE9
+#define LCD_REG_234           0xEA
+#define LCD_REG_235           0xEB
+#define LCD_REG_236           0xEC
+#define LCD_REG_237           0xED
+#define LCD_REG_241           0xF1
+#define LCD_REG_242           0xF2
 
 
 /**
@@ -328,6 +353,7 @@ typedef struct
   */
 void LCD_DeInit(void);
 void LCD_Setup(void);
+void LCD_SwapDirection(FunctionalState NewState);
 void STM32303C_LCD_Init(void);
 void LCD_SetColors(__IO uint16_t _TextColor, __IO uint16_t _BackColor);
 void LCD_GetColors(__IO uint16_t *_TextColor, __IO uint16_t *_BackColor);

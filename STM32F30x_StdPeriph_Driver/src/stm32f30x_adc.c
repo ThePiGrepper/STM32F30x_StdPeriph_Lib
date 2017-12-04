@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f30x_adc.c
   * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    27-February-2014
+  * @version V1.2.2
+  * @date    27-February-2015
   * @brief   This file provides firmware functions to manage the following
   *          functionalities of the Analog to Digital Convertor (ADC) peripheral:
   *           + Initialization and Configuration
@@ -55,7 +55,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2015 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -552,7 +552,7 @@ void ADC_VoltageRegulatorCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
 }
 
 /**
-  * @brief  Selectes the differential mode for a specific channel
+  * @brief  Selects the differential mode for a specific channel
   * @param  ADCx: where x can be 1, 2, 3 or 4 to select the ADC peripheral.
   * @param  ADC_Channel: the ADC channel to configure for the analog watchdog.
   *   This parameter can be one of the following values:
@@ -689,7 +689,7 @@ void ADC_AutoDelayCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
   *     @arg ADC_AnalogWatchdog_AllInjecEnable: Analog watchdog on  all injected channel
   *     @arg ADC_AnalogWatchdog_AllRegAllInjecEnable: Analog watchdog on all regular and injected channels
   *     @arg ADC_AnalogWatchdog_None: No channel guarded by the analog watchdog
-  * @retval None	
+  * @retval None
   */
 void ADC_AnalogWatchdogCmd(ADC_TypeDef* ADCx, uint32_t ADC_AnalogWatchdog)
 {
@@ -1043,7 +1043,7 @@ void ADC_VbatCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
 
   [..] To configure a regular sequence of channels use:
    (#) ADC_RegularChannelConfig()
-       this fuction allows:
+       this function allows:
        (++) Configure the rank in the regular group sequencer for each channel
        (++) Configure the sampling time for each channel
 
@@ -1058,7 +1058,7 @@ void ADC_VbatCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
    (#) ADC_StopConversion()
 
    [..]
-   (@)Please Note that the following features for regular channels are configurated
+   (@)Please Note that the following features for regular channels are configured
      using the ADC_Init() function :
           (++) continuous mode activation
           (++) Resolution
@@ -1070,7 +1070,7 @@ void ADC_VbatCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
      regular channel. When the Conversion value is read, the EOC Flag is
      automatically cleared.
 
-  [..] To configure the  discontinous mode, the following functions should be used:
+  [..] To configure the  discontinuous mode, the following functions should be used:
    (#) ADC_DiscModeChannelCountConfig() to configure the number of discontinuous channel to be converted.
    (#) ADC_DiscModeCmd() to enable the discontinuous mode.
 
@@ -1118,11 +1118,11 @@ void ADC_VbatCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
   *     @arg ADC_SampleTime_1Cycles5: Sample time equal to 1.5 cycles
   *     @arg ADC_SampleTime_2Cycles5: Sample time equal to 2.5 cycles
   *     @arg ADC_SampleTime_4Cycles5: Sample time equal to 4.5 cycles
-  *     @arg ADC_SampleTime_7Cycles5: Sample time equal to 7.5 cycles	
-  *     @arg ADC_SampleTime_19Cycles5: Sample time equal to 19.5 cycles	
-  *     @arg ADC_SampleTime_61Cycles5: Sample time equal to 61.5 cycles	
-  *     @arg ADC_SampleTime_181Cycles5: Sample time equal to 181.5 cycles	
-  *     @arg ADC_SampleTime_601Cycles5: Sample time equal to 601.5 cycles	
+  *     @arg ADC_SampleTime_7Cycles5: Sample time equal to 7.5 cycles
+  *     @arg ADC_SampleTime_19Cycles5: Sample time equal to 19.5 cycles
+  *     @arg ADC_SampleTime_61Cycles5: Sample time equal to 61.5 cycles
+  *     @arg ADC_SampleTime_181Cycles5: Sample time equal to 181.5 cycles
+  *     @arg ADC_SampleTime_601Cycles5: Sample time equal to 601.5 cycles
   * @retval None
   */
 void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime)
@@ -1262,14 +1262,14 @@ void ADC_RegularChannelSequencerLengthConfig(ADC_TypeDef* ADCx, uint8_t Sequence
   *     @arg ADC_ExternalTrigger_Event12: External trigger event 12
   *     @arg ADC_ExternalTrigger_Event13: External trigger event 13
   *     @arg ADC_ExternalTrigger_Event14: External trigger event 14
-  *     @arg ADC_ExternalTrigger_Event15: External trigger event 15	
+  *     @arg ADC_ExternalTrigger_Event15: External trigger event 15
   * @param  ADC_ExternalTrigEventEdge: ADC external Trigger Polarity.
   *   This parameter can be one of the following values:
   *     @arg ADC_ExternalTrigEventEdge_OFF: Hardware trigger detection disabled
   *                                          (conversions can be launched by software)
   *     @arg ADC_ExternalTrigEventEdge_RisingEdge: Hardware trigger detection on the rising edge
   *     @arg ADC_ExternalTrigEventEdge_FallingEdge: Hardware trigger detection on the falling edge
-  *     @arg ADC_ExternalTrigEventEdge_BothEdge: Hardware trigger detection on both the rising and falling edges	
+  *     @arg ADC_ExternalTrigEventEdge_BothEdge: Hardware trigger detection on both the rising and falling edges
   * @retval None
   */
 void ADC_ExternalTriggerConfig(ADC_TypeDef* ADCx, uint16_t ADC_ExternalTrigConvEvent, uint16_t ADC_ExternalTrigEventEdge)
@@ -1425,7 +1425,7 @@ uint32_t ADC_GetDualModeConversionValue(ADC_TypeDef* ADCx)
     tmpreg1 = ADC1_2->CDR;
   }
   else
-  {	
+  {
     /* Get the dual mode conversion value */
     tmpreg1 = ADC3_4->CDR;
   }
@@ -1830,11 +1830,11 @@ void ADC_DMAConfig(ADC_TypeDef* ADCx, uint32_t ADC_DMAMode)
   *     @arg ADC_SampleTime_1Cycles5: Sample time equal to 1.5 cycles
   *     @arg ADC_SampleTime_2Cycles5: Sample time equal to 2.5 cycles
   *     @arg ADC_SampleTime_4Cycles5: Sample time equal to 4.5 cycles
-  *     @arg ADC_SampleTime_7Cycles5: Sample time equal to 7.5 cycles	
-  *     @arg ADC_SampleTime_19Cycles5: Sample time equal to 19.5 cycles	
-  *     @arg ADC_SampleTime_61Cycles5: Sample time equal to 61.5 cycles	
-  *     @arg ADC_SampleTime_181Cycles5: Sample time equal to 181.5 cycles	
-  *     @arg ADC_SampleTime_601Cycles5: Sample time equal to 601.5 cycles	
+  *     @arg ADC_SampleTime_7Cycles5: Sample time equal to 7.5 cycles
+  *     @arg ADC_SampleTime_19Cycles5: Sample time equal to 19.5 cycles
+  *     @arg ADC_SampleTime_61Cycles5: Sample time equal to 61.5 cycles
+  *     @arg ADC_SampleTime_181Cycles5: Sample time equal to 181.5 cycles
+  *     @arg ADC_SampleTime_601Cycles5: Sample time equal to 601.5 cycles
   * @retval None
   */
 void ADC_InjectedChannelSampleTimeConfig(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel, uint8_t ADC_SampleTime)

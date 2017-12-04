@@ -1,9 +1,9 @@
 ;******************** (C) COPYRIGHT 2015 STMicroelectronics ********************
-;* File Name          : startup_stm32f30x.s
+;* File Name          : startup_stm32f303xe.s
 ;* Author             : MCD Application Team
 ;* Version            : V1.2.2
 ;* Date               : 27-February-2015
-;* Description        : STM32F30x devices vector table for MDK-ARM toolchain.
+;* Description        : STM32F303xE devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -83,7 +83,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 ; External Interrupts
                 DCD     WWDG_IRQHandler                   ; Window WatchDog
                 DCD     PVD_IRQHandler                    ; PVD through EXTI Line detection
-                DCD     TAMPER_STAMP_IRQHandler             ; Tamper and TimeStamps through the EXTI line
+                DCD     TAMPER_STAMP_IRQHandler           ; Tamper and TimeStamps through the EXTI line
                 DCD     RTC_WKUP_IRQHandler               ; RTC Wakeup through the EXTI line
                 DCD     FLASH_IRQHandler                  ; FLASH
                 DCD     RCC_IRQHandler                    ; RCC
@@ -129,7 +129,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     TIM8_TRG_COM_IRQHandler           ; TIM8 Trigger and Commutation
                 DCD     TIM8_CC_IRQHandler                ; TIM8 Capture Compare
                 DCD     ADC3_IRQHandler                   ; ADC3
-                DCD     0                                 ; Reserved
+                DCD     FMC_IRQHandler                    ; FMC
                 DCD     0                                 ; Reserved
                 DCD     0                                 ; Reserved
                 DCD     SPI3_IRQHandler                   ; SPI3
@@ -153,16 +153,19 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     0                                 ; Reserved
                 DCD     0                                 ; Reserved
                 DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
+                DCD     I2C3_EV_IRQHandler                ; I2C3 Event
+                DCD     I2C3_ER_IRQHandler                ; I2C3 Error
                 DCD     USB_HP_IRQHandler                 ; USB High Priority remap
                 DCD     USB_LP_IRQHandler                 ; USB Low Priority remap
                 DCD     USBWakeUp_RMP_IRQHandler          ; USB Wakeup remap through EXTI
-                DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
+                DCD     TIM20_BRK_IRQHandler              ; TIM20 Break
+                DCD     TIM20_UP_IRQHandler               ; TIM20 Update
+                DCD     TIM20_TRG_COM_IRQHandler          ; TIM20 Trigger and Commutation
+                DCD     TIM20_CC_IRQHandler               ; TIM20 Capture Compare
                 DCD     FPU_IRQHandler                    ; FPU
+                DCD     0                                 ; Reserved
+                DCD     0                                 ; Reserved
+                DCD     SPI4_IRQHandler                   ; SPI4
 
 __Vectors_End
 
@@ -230,13 +233,13 @@ Default_Handler PROC
 
                 EXPORT  WWDG_IRQHandler                   [WEAK]
                 EXPORT  PVD_IRQHandler                    [WEAK]
-                EXPORT  TAMPER_STAMP_IRQHandler             [WEAK]
+                EXPORT  TAMPER_STAMP_IRQHandler           [WEAK]
                 EXPORT  RTC_WKUP_IRQHandler               [WEAK]
                 EXPORT  FLASH_IRQHandler                  [WEAK]
                 EXPORT  RCC_IRQHandler                    [WEAK]
                 EXPORT  EXTI0_IRQHandler                  [WEAK]
                 EXPORT  EXTI1_IRQHandler                  [WEAK]
-                EXPORT  EXTI2_TS_IRQHandler                  [WEAK]
+                EXPORT  EXTI2_TS_IRQHandler               [WEAK]
                 EXPORT  EXTI3_IRQHandler                  [WEAK]
                 EXPORT  EXTI4_IRQHandler                  [WEAK]
                 EXPORT  DMA1_Channel1_IRQHandler          [WEAK]
@@ -270,12 +273,13 @@ Default_Handler PROC
                 EXPORT  USART3_IRQHandler                 [WEAK]
                 EXPORT  EXTI15_10_IRQHandler              [WEAK]
                 EXPORT  RTC_Alarm_IRQHandler              [WEAK]
-                EXPORT  USBWakeUp_IRQHandler               [WEAK]
+                EXPORT  USBWakeUp_IRQHandler              [WEAK]
                 EXPORT  TIM8_BRK_IRQHandler               [WEAK]
                 EXPORT  TIM8_UP_IRQHandler                [WEAK]
                 EXPORT  TIM8_TRG_COM_IRQHandler           [WEAK]
                 EXPORT  TIM8_CC_IRQHandler                [WEAK]
                 EXPORT  ADC3_IRQHandler                   [WEAK]
+                EXPORT  FMC_IRQHandler                    [WEAK]
                 EXPORT  SPI3_IRQHandler                   [WEAK]
                 EXPORT  UART4_IRQHandler                  [WEAK]
                 EXPORT  UART5_IRQHandler                  [WEAK]
@@ -290,10 +294,17 @@ Default_Handler PROC
                 EXPORT  COMP1_2_3_IRQHandler              [WEAK]
                 EXPORT  COMP4_5_6_IRQHandler              [WEAK]
                 EXPORT  COMP7_IRQHandler                  [WEAK]
+                EXPORT  I2C3_EV_IRQHandler                [WEAK]
+                EXPORT  I2C3_ER_IRQHandler                [WEAK]
                 EXPORT  USB_HP_IRQHandler                 [WEAK]
                 EXPORT  USB_LP_IRQHandler                 [WEAK]
-                EXPORT  USBWakeUp_RMP_IRQHandler              [WEAK]
+                EXPORT  USBWakeUp_RMP_IRQHandler          [WEAK]
+                EXPORT  TIM20_BRK_IRQHandler              [WEAK]
+                EXPORT  TIM20_UP_IRQHandler               [WEAK]
+                EXPORT  TIM20_TRG_COM_IRQHandler          [WEAK]
+                EXPORT  TIM20_CC_IRQHandler               [WEAK]
                 EXPORT  FPU_IRQHandler                    [WEAK]
+                EXPORT  SPI3_IRQHandler                   [WEAK]
 
 WWDG_IRQHandler
 PVD_IRQHandler
@@ -343,6 +354,7 @@ TIM8_UP_IRQHandler
 TIM8_TRG_COM_IRQHandler
 TIM8_CC_IRQHandler
 ADC3_IRQHandler
+FMC_IRQHandler
 SPI3_IRQHandler
 UART4_IRQHandler
 UART5_IRQHandler
@@ -357,10 +369,17 @@ ADC4_IRQHandler
 COMP1_2_3_IRQHandler
 COMP4_5_6_IRQHandler
 COMP7_IRQHandler
+I2C3_EV_IRQHandler
+I2C3_ER_IRQHandler
 USB_HP_IRQHandler
 USB_LP_IRQHandler
 USBWakeUp_RMP_IRQHandler
+TIM20_BRK_IRQHandler
+TIM20_UP_IRQHandler
+TIM20_TRG_COM_IRQHandler
+TIM20_CC_IRQHandler
 FPU_IRQHandler
+SPI4_IRQHandler
 
                 B       .
 

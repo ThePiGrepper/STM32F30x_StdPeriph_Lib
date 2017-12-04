@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32f30x.s
+  * @file      startup_stm32f303xe.s
   * @author    MCD Application Team
-  * @version   V1.1.1
-  * @date      28-March-2014
-  * @brief     stm32f30x vector table for Atollic TrueSTUDIO toolchain.
+  * @version   V1.2.2
+  * @date      27-February-2015
+  * @brief     stm32f30x vector table for for GCC based toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -17,7 +17,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2015 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ LoopFillZerobss:
 	cmp	r2, r3
 	bcc	FillZerobss
 
-/* Call the clock system intitialization function.*/
+/* Call the clock system initialization function.*/
 	bl  SystemInit
 /* Call static constructors */
 	bl __libc_init_array
@@ -199,7 +199,7 @@ g_pfnVectors:
 	.word	TIM8_TRG_COM_IRQHandler
 	.word	TIM8_CC_IRQHandler
 	.word	ADC3_IRQHandler
-	.word	0
+	.word	FMC_IRQHandler
 	.word	0
 	.word	0
 	.word	SPI3_IRQHandler
@@ -223,16 +223,19 @@ g_pfnVectors:
 	.word	0
 	.word	0
 	.word	0
-	.word	0
-	.word	0
+	.word	I2C3_EV_IRQHandler
+	.word	I2C3_ER_IRQHandler
 	.word	USB_HP_IRQHandler
 	.word	USB_LP_IRQHandler
 	.word	USBWakeUp_RMP_IRQHandler
-	.word	0
-	.word	0
-	.word	0
-	.word	0
+	.word	TIM20_BRK_IRQHandler
+	.word	TIM20_UP_IRQHandler
+	.word	TIM20_TRG_COM_IRQHandler
+	.word	TIM20_CC_IRQHandler
 	.word	FPU_IRQHandler
+  .word	0
+	.word	0
+	.word	SPI4_IRQHandler
 
 /*******************************************************************************
 *
@@ -413,6 +416,9 @@ g_pfnVectors:
 	.weak	ADC3_IRQHandler
 	.thumb_set ADC3_IRQHandler,Default_Handler
 
+  .weak	FMC_IRQHandler
+	.thumb_set FMC_IRQHandler,Default_Handler
+
 	.weak	SPI3_IRQHandler
 	.thumb_set SPI3_IRQHandler,Default_Handler
 
@@ -455,6 +461,12 @@ g_pfnVectors:
 	.weak	COMP7_IRQHandler
 	.thumb_set COMP7_IRQHandler,Default_Handler
 
+  .weak	I2C3_EV_IRQHandler
+	.thumb_set I2C3_EV_IRQHandler,Default_Handler
+
+  .weak	I2C3_ER_IRQHandler
+	.thumb_set I2C3_ER_IRQHandler,Default_Handler
+
 	.weak	USB_HP_IRQHandler
 	.thumb_set USB_HP_IRQHandler,Default_Handler
 
@@ -464,6 +476,21 @@ g_pfnVectors:
 	.weak	USBWakeUp_RMP_IRQHandler
 	.thumb_set USBWakeUp_RMP_IRQHandler,Default_Handler
 
+  .weak	TIM20_BRK_IRQHandler
+	.thumb_set TIM20_BRK_IRQHandler,Default_Handler
+
+  .weak	TIM20_UP_IRQHandler
+	.thumb_set TIM20_UP_IRQHandler,Default_Handler
+
+  .weak	TIM20_TRG_COM_IRQHandler
+	.thumb_set TIM20_TRG_COM_IRQHandler,Default_Handler
+
+ 	.weak	TIM20_CC_IRQHandler
+	.thumb_set TIM20_CC_IRQHandler,Default_Handler
+
 	.weak	FPU_IRQHandler
 	.thumb_set FPU_IRQHandler,Default_Handler
+
+  .weak	SPI4_IRQHandler
+	.thumb_set SPI4_IRQHandler,Default_Handler
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

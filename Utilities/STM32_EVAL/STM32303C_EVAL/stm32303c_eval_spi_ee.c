@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32303c_eval_spi_ee.c
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file provides a set of functions needed to manage the SPI M95xxx
   *          EEPROM memory mounted on STM32303C-EVAL board (refer to stm32303c_eval.h
   *          to know about the boards supporting this memory).
@@ -57,18 +57,19 @@
   * @{
   */
 
+/** @addtogroup STM32_EVAL
+  * @{
+  */
+
 /** @addtogroup STM32303C_EVAL
   * @{
   */
 
-/** @addtogroup Common
-  * @{
-  */
-
-/** @addtogroup STM32303C_EVAL_SPI_EEPROM
+/** @addtogroup STM32303C_EVAL_SPI_EE
   * @brief      This file includes the M95xxx SPI EEPROM driver of STM32303C-EVAL boards.
   * @{
   */
+
 
 /** @defgroup STM32303C_EVAL_SPI_EEPROM_Private_Types
   * @{

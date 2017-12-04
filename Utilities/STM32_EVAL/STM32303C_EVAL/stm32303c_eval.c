@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32303c_eval.c
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file provides: a set of firmware functions to manage Leds,
   *          push-button and COM ports
   ******************************************************************************
@@ -106,7 +106,7 @@ const uint8_t BUTTON_PORT_SOURCE[BUTTONn] = {KEY_BUTTON_EXTI_PORT_SOURCE,
                                               UP_BUTTON_EXTI_PORT_SOURCE,
                                               DOWN_BUTTON_EXTI_PORT_SOURCE,
                                               SEL_BUTTON_EXTI_PORT_SOURCE};
-								
+
 const uint8_t BUTTON_PIN_SOURCE[BUTTONn] = {KEY_BUTTON_EXTI_PIN_SOURCE,
                                              RIGHT_BUTTON_EXTI_PIN_SOURCE,
                                              LEFT_BUTTON_EXTI_PIN_SOURCE,

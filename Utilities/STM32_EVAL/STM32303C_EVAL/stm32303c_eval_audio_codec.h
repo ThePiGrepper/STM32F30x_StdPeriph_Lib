@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32303c_eval_audio_codec.h
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    02-October-2012
+  * @version V1.0.1
+  * @date    23-October-2012
   * @brief   This file contains all the functions prototypes for the
   *          stm32303c_eval_audio_codec.c driver.
   ******************************************************************************
@@ -85,7 +85,7 @@
 #define EVAL_AUDIO_IRQ_SUBRIO            0   /* Select the sub-priority level (0 is the highest) */
 
 /* Uncomment the following line to use the default Codec_TIMEOUT_UserCallback()
-   function implemented in stm32373c_eval_audio_codec.c file.
+   function implemented in stm32303c_eval_audio_codec.c file.
    Codec_TIMEOUT_UserCallback() function is called whenever a timeout condition
    occurs during communication (waiting on an event that doesn't occur, bus
    errors, busy devices ...). */
@@ -98,7 +98,7 @@
 /* I2C clock speed configuration (in Hz)
   WARNING:
    Make sure that this define is not already declared in other files (ie.
-  stm32373c_eval.h file). It can be used in parallel by other modules. */
+  stm32303c_eval.h file). It can be used in parallel by other modules. */
 
 /* I2C TIMING Register define when I2C clock source is SYSCLK */
 /* set TIMING to 0xC062121F to reach 100 KHz speed (Rise time = 640ns, Fall time = 20ns) */
@@ -266,7 +266,7 @@ void EVAL_AUDIO_Error_CallBack(void* pData);
    occurs during communication (waiting on an event that doesn't occur, bus
    errors, busy devices ...) on the Codec control interface (I2C).
    You can use the default timeout callback implementation by uncommenting the
-   define USE_DEFAULT_TIMEOUT_CALLBACK in stm32373c_eval_audio_codec.h file.
+   define USE_DEFAULT_TIMEOUT_CALLBACK in stm32303c_eval_audio_codec.h file.
    Typically the user implementation of this callback should reset I2C peripheral
    and re-initialize communication or in worst case reset all the application. */
 uint32_t Codec_TIMEOUT_UserCallback(void);

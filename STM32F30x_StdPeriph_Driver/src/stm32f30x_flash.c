@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f30x_flash.c
   * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    27-February-2014
+  * @version V1.2.2
+  * @date    27-February-2015
   * @brief   This file provides firmware functions to manage the following
   *          functionalities of the FLASH peripheral:
   *            + FLASH Interface configuration
@@ -55,7 +55,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2015 STMicroelectronics</center></h2>
   *
   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
   * You may not use this file except in compliance with the License.
@@ -437,11 +437,11 @@ FLASH_Status FLASH_ProgramHalfWord(uint32_t Address, uint16_t Data)
          (+) FLASH_Status FLASH_OB_BOOTConfig(uint8_t OB_BOOT1);
          (+) FLASH_Status FLASH_OB_VDDAConfig(uint8_t OB_VDDA_ANALOG);
          (+) FLASH_Status FLASH_OB_SRMParityConfig(uint8_t OB_SRAM_Parity);
-         (+) FLASH_Status FLASH_OB_WriteUser(uint8_t OB_USER);					
+         (+) FLASH_Status FLASH_OB_WriteUser(uint8_t OB_USER);
          (+) FLASH_Status FLASH_OB_Launch(void);
-         (+) uint32_t FLASH_OB_GetUser(void);						
-         (+) uint8_t FLASH_OB_GetWRP(void);						
-         (+) uint8_t FLASH_OB_GetRDP(void);							
+         (+) uint32_t FLASH_OB_GetUser(void);
+         (+) uint8_t FLASH_OB_GetWRP(void);
+         (+) uint8_t FLASH_OB_GetRDP(void);
     [..] Any operation of erase or program should follow these steps:
          (#) Call the FLASH_OB_Unlock() function to enable the FLASH option control
              register access.
@@ -455,9 +455,9 @@ FLASH_Status FLASH_ProgramHalfWord(uint32_t Address, uint16_t Data)
  	         (++) FLASH_Status FLASH_OB_BOOTConfig(uint8_t OB_BOOT1);
                   => to set the boot1 mode
              (++) FLASH_Status FLASH_OB_VDDAConfig(uint8_t OB_VDDA_ANALOG);
-                  => to Enable/Disable the VDDA monotoring.
+                  => to Enable/Disable the VDDA monitoring.
              (++) FLASH_Status FLASH_OB_SRMParityConfig(uint8_t OB_SRAM_Parity);
-                  => to Enable/Disable the SRAM Parity check.		
+                  => to Enable/Disable the SRAM Parity check.
 	         (++) FLASH_Status FLASH_OB_WriteUser(uint8_t OB_USER);
                   => to write all user option bytes: OB_IWDG, OB_STOP, OB_STDBY,
                      OB_BOOT1, OB_VDDA_ANALOG and OB_VDD_SD12.
@@ -590,7 +590,7 @@ FLASH_Status FLASH_OB_Erase(void)
   */
 FLASH_Status FLASH_OB_EnableWRP(uint32_t OB_WRP)
 {
-  uint16_t WRP0_Data = 0xFFFF, WRP1_Data = 0xFFFF;
+  uint16_t WRP0_Data = 0xFFFF, WRP1_Data = 0xFFFF, WRP2_Data = 0xFFFF, WRP3_Data = 0xFFFF;
 
   FLASH_Status status = FLASH_COMPLETE;
 
@@ -599,7 +599,9 @@ FLASH_Status FLASH_OB_EnableWRP(uint32_t OB_WRP)
 
   OB_WRP = (uint32_t)(~OB_WRP);
   WRP0_Data = (uint16_t)(OB_WRP & OB_WRP0_WRP0);
-  WRP1_Data = (uint16_t)((OB_WRP & OB_WRP0_nWRP0) >> 8);
+  WRP1_Data = (uint16_t)((OB_WRP >> 8) & OB_WRP0_WRP0);
+  WRP2_Data = (uint16_t)((OB_WRP >> 16) & OB_WRP0_WRP0) ;
+  WRP3_Data = (uint16_t)((OB_WRP >> 24) & OB_WRP0_WRP0) ;
 
   /* Wait for last operation to be completed */
   status = FLASH_WaitForLastOperation(FLASH_ER_PRG_TIMEOUT);
@@ -618,6 +620,20 @@ FLASH_Status FLASH_OB_EnableWRP(uint32_t OB_WRP)
     if((status == FLASH_COMPLETE) && (WRP1_Data != 0xFF))
     {
       OB->WRP1 = WRP1_Data;
+
+      /* Wait for last operation to be completed */
+      status = FLASH_WaitForLastOperation(FLASH_ER_PRG_TIMEOUT);
+    }
+    if((status == FLASH_COMPLETE) && (WRP2_Data != 0xFF))
+    {
+      OB->WRP2 = WRP2_Data;
+
+      /* Wait for last operation to be completed */
+      status = FLASH_WaitForLastOperation(FLASH_ER_PRG_TIMEOUT);
+    }
+    if((status == FLASH_COMPLETE) && (WRP3_Data != 0xFF))
+    {
+      OB->WRP3 = WRP3_Data;
 
       /* Wait for last operation to be completed */
       status = FLASH_WaitForLastOperation(FLASH_ER_PRG_TIMEOUT);
@@ -832,11 +848,11 @@ FLASH_Status FLASH_OB_VDDAConfig(uint8_t OB_VDDA_ANALOG)
 }
 
 /**
-  * @brief  Sets or resets the SRAM partiy.
-  * @param  OB_SRAM_Parity: Set or Reset the SRAM partiy enable bit.
+  * @brief  Sets or resets the SRAM parity.
+  * @param  OB_SRAM_Parity: Set or Reset the SRAM parity enable bit.
   *         This parameter can be one of the following values:
-  *             @arg OB_SRAM_PARITY_SET: Set SRAM partiy.
-  *             @arg OB_SRAM_PARITY_RESET: Reset SRAM partiy.
+  *             @arg OB_SRAM_PARITY_SET: Set SRAM parity.
+  *             @arg OB_SRAM_PARITY_RESET: Reset SRAM parity.
   * @retval None
   */
 FLASH_Status FLASH_OB_SRAMParityConfig(uint8_t OB_SRAM_Parity)
@@ -1045,7 +1061,7 @@ void FLASH_ITConfig(uint32_t FLASH_IT, FunctionalState NewState)
   * @param  FLASH_FLAG: specifies the FLASH flag to check.
   *   This parameter can be one of the following values:
   *     @arg FLASH_FLAG_BSY: FLASH write/erase operations in progress flag
-  *     @arg FLASH_FLAG_PGERR: FLASH Programming error flag flag
+  *     @arg FLASH_FLAG_PGERR: FLASH Programming error flag
   *     @arg FLASH_FLAG_WRPERR: FLASH Write protected error flag
   *     @arg FLASH_FLAG_EOP: FLASH End of Programming flag
   * @retval The new state of FLASH_FLAG (SET or RESET).
@@ -1073,7 +1089,7 @@ FlagStatus FLASH_GetFlagStatus(uint32_t FLASH_FLAG)
   * @brief  Clears the FLASH's pending flags.
   * @param  FLASH_FLAG: specifies the FLASH flags to clear.
   *   This parameter can be any combination of the following values:
-  *     @arg FLASH_FLAG_PGERR: FLASH Programming error flag flag
+  *     @arg FLASH_FLAG_PGERR: FLASH Programming error flag
   *     @arg FLASH_FLAG_WRPERR: FLASH Write protected error flag
   *     @arg FLASH_FLAG_EOP: FLASH End of Programming flag
   * @retval None
